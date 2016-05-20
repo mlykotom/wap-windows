@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="cs">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h2>Spuštění</h2>
+Do kódu HTML strány je potřeba přidat javascriptový soubor ze složky <strong>js/windows_manager.js</strong> a také
+stylový soubor <strong>css/style.css</strong>.
+<pre>
+&lt;script type="text/javascript" src="./js/windows_manager.js"&gt;&lt;/script&gt; <br/>
+&lt;link href="./css/style.css" rel="stylesheet" type="text/css"/&gt; 
+</pre>
+Tímto načtete příslušné funkce manažera, ale nespustíte jej.
+Pro spuštění je potřeba v kódu (před uzavíracím tagem &lt;/body&gt;) vložit javascriptový kód:
+<pre>
+&lt;script type="text/javascript&gt;
+  WindowsManager.run();
+&lt;/script&gt; 
+</pre>
+
+<h2>Použití</h2>
+Manažer transformuje všechny elementy s css třídou <strong>.desktop</strong> na samostatné pracovní prostředí (tzv.
+workplace).
+V rámci tohoto elementu pak transformuje všechny elementy s třídou <strong>.window</strong>, ze kterých vytvoří
+jednotlivá okna plochy.
+S těmito okny je pak možné pohybovat, maximalizovat, měnit rozměry.
+
+Pro editaci vzhledu oken je potřeba upravit zmíněný soubor <strong>./css/style.css</strong>.
+Existují předvytvořené třídy pro velikost okna:
+<ul>
+    <li><strong>.small</strong></li>
+    <li><strong>.medium</strong></li>
+    <li><strong>.large</strong></li>
+</ul>
+
+Pro nadefinování nadpisu okna je možné použít html atribut <strong>title</strong>,
+který se po inicializaci oken nastaví do záhlaví okna a pak se atribut zruší pro další použití
+(V případě nedefinování se použije výchozí popisek okna "Empty Window").
+
+</body>
+</html>

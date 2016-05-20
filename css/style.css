@@ -1,0 +1,246 @@
+/*
+    Main wrapper for one desktop.
+*/
+.desktop {
+    border: 1px solid #000;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+    Available so that TEXT can't be selecting.
+    DO NOT CHANGE (only if you know what're you doing)
+*/
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*
+    Main window element
+    Can change everything except position:absolute
+*/
+.desktop > .window {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    min-width: 200px !important;
+    min-height: 100px !important;
+    background: #f6f6f6;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 50px #747474;
+    -moz-box-shadow: 10px 10px 50px #747474;
+    box-shadow: 10px 10px 50px #747474;
+}
+
+/* predefined sizes of window */
+.desktop > .window.small {
+    width: 200px;
+    height: 200px;
+}
+
+.desktop > .window.medium {
+    width: 400px;
+    height: 400px;
+}
+
+.desktop > .window.large {
+    width: 600px;
+    height: 600px;
+}
+
+/*
+    Window state - active
+*/
+.desktop > .window.active {
+    background: #ededed;
+}
+
+/*
+    Window state - maximized
+*/
+.desktop > .window.maximized {
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+/*
+    Window's edge, so that we can resize it
+*/
+.desktop > .window > .edge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    cursor: ew-resize;
+}
+
+/*
+    Window's corners so that we can change mouse pointer
+*/
+.desktop > .window .corner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    cursor: nesw-resize;
+}
+
+/*
+   One corner must be outside because edges overlaps each other
+   DO NOT CHANGE
+*/
+.desktop > .window > .corner {
+    z-index: 1;
+    cursor: nwse-resize;
+}
+
+/*
+    Corners and edges of window
+*/
+.desktop > .window > .edge.top, .desktop > .window > .edge.bottom {
+    height: 5px;
+    width: 100%;
+    cursor: ns-resize;
+}
+
+.desktop > .window > .edge.bottom {
+    top: auto;
+    bottom: 0;
+}
+
+.desktop > .window > .edge.bottom > .corner {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    cursor: nwse-resize;
+}
+
+.desktop > .window > .edge.left > .corner {
+    top: auto;
+    bottom: 0;
+}
+
+.desktop > .window > .edge.right, .desktop > .window > .edge.right > .corner {
+    right: 0;
+    left: auto;
+}
+
+/*
+    Window's body (without resizable area)
+*/
+.desktop > .window > .body {
+    cursor: default;
+    margin: 0 5px 5px;
+    overflow: hidden;
+}
+
+/*
+    Top panel (ribbon)
+*/
+.desktop > .window > .ribbon {
+    width: 100%;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    height: 25px;
+    font-family: "Myriad Pro", "Helvetica Neue", "Lucida Grande", sans-serif;
+    position: relative;
+    cursor: default;
+    background: #f6f6f6;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid #c5c5c5;
+}
+
+/*
+    Ribbon when window is active
+*/
+.desktop > .window.active > .ribbon {
+    background: #d4d4d4;
+    background: -webkit-linear-gradient(#f0f0f0, #d4d4d4);
+    background: -o-linear-gradient(#f0f0f0, #d4d4d4);
+    background: -moz-linear-gradient(#f0f0f0, #d4d4d4);
+    background: linear-gradient(#f0f0f0, #d4d4d4);
+}
+
+/*
+    Window's title
+*/
+.desktop > .window > .ribbon h1 {
+    padding: 0;
+    margin: 0;
+    color: #413f41;
+    font-size: 14px;
+    line-height: 22px;
+    overflow: hidden;
+    text-align: center;
+    font-weight: normal;
+}
+
+/*
+    Actions buttons wrapper
+*/
+.desktop > .window > .ribbon > .actions {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+/*
+    Actions buttons general style
+*/
+.desktop > .window > .ribbon > .actions > div {
+    float: left;
+    width: 10px;
+    height: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 11px;
+    text-align: center;
+    color: transparent;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+/* action buttons */
+.desktop > .window > .ribbon > .actions > div:hover {
+    color: #525252;
+}
+
+/*
+    Close button
+*/
+.desktop > .window > .ribbon > .actions > div.close {
+    background: #fc605c;
+    border: 1px solid #df4744;
+}
+
+/*
+    Maximize button
+*/
+.desktop > .window > .ribbon > .actions > div.maximize {
+    background: #35c94a;
+    border: 1px solid #37ae44;
+}
